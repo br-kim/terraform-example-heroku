@@ -5,6 +5,9 @@ resource "heroku_app" "my_app" {
   buildpacks = [
     "heroku/python"
   ]
+  config_vars = {
+    FASTAPI_ENV = "production"
+  }
 }
 
 resource "heroku_addon" "prd_db" {
