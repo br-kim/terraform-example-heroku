@@ -10,13 +10,13 @@ resource "heroku_app" "my_app" {
 resource "heroku_addon" "prd_db" {
   app  = heroku_app.my_app.name
   plan = "heroku-postgresql:hobby-dev"
-  name = "my-prd-db"
+  name = "myapp-prd-db"
 }
 
 resource "heroku_addon" "dev_db" {
   app  = heroku_app.my_app.name
   plan = "heroku-postgresql:hobby-dev"
-  name = "my-dev-db"
+  name = "myapp-dev-db"
 }
 
 resource "heroku_addon_attachment" "prd_database" {
