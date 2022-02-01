@@ -7,12 +7,22 @@ resource "heroku_app" "my_app" {
   ]
 }
 
-resource "heroku_addon" "my_database" {
+resource "heroku_addon" "prd_db" {
+  app  = heroku_app.my_app.name
+  plan = "heroku-postgresql:hobby-dev"
+}
+
+resource "heroku_addon" "dev_db" {
   app  = heroku_app.my_app.name
   plan = "heroku-postgresql:hobby-dev"
 }
 
 resource "heroku_addon_attachment" "database" {
   app_id   = heroku_app.my_app.id
-  addon_id = heroku_addon.my_database.id
+  addon_id = heroku_addon.prd_db.id
+}
+
+resource "heroku_addon_attachment" "database" {
+  app_id   = heroku_app.my_app.id
+  addon_id = heroku_addon.dev_db.id
 }
