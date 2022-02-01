@@ -17,12 +17,12 @@ resource "heroku_addon" "dev_db" {
   plan = "heroku-postgresql:hobby-dev"
 }
 
-resource "heroku_addon_attachment" "database" {
+resource "heroku_addon_attachment" "prd_database" {
   app_id   = heroku_app.my_app.id
   addon_id = heroku_addon.prd_db.id
 }
 
-resource "heroku_addon_attachment" "database" {
+resource "heroku_addon_attachment" "dev_database" {
   app_id   = heroku_app.my_app.id
   addon_id = heroku_addon.dev_db.id
 }
